@@ -1,4 +1,8 @@
 from SemillaAleatoria import *
+puntos = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
+
+print ("prueba de limite de b lineal")
+print(calcular_bLineal(puntos))
 
 print ("prueba restriccion")
 lim_m = 100
@@ -7,7 +11,6 @@ r = 80
 print(restriccion(r, lim_m, 0))
 
 print("prueba Z lineal")
-puntos = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
 m = .1863
 b = .2369
 print(Z_lineal(puntos, m, b))

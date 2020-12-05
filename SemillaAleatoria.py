@@ -10,6 +10,13 @@ def restriccion(value, lim, tipo):
 			cumple = True
 	return cumple
 
+def calcular_bLineal(puntos):
+	b = 0
+	for (x,y) in puntos:
+		b += x
+	b = b**2
+	return b
+
 def Z_lineal(puntos, m, b):
 	z_value = 0 
 	for (x,y) in puntos:
@@ -23,3 +30,4 @@ def Z_gaussiana(puntos, k, m):
 		z_value += abs(math.exp(-k*((x-m)**2)))
 	z_value *= -1 
 	return z_value
+
