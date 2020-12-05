@@ -7,7 +7,10 @@ print(calcular_bLineal(puntos))
 
 print ("prueba restriccion")
 lim_m = 100
-lim_b = 132.5
+lim_b=0
+for (x,y) in puntos:
+    	lim_b+=x
+lim_b=lim_b*lim_b
 r = 80
 print(restriccion(r, lim_m, 0))
 
@@ -50,11 +53,41 @@ for j in range(1000):
 			mejorMPob = propuestas[0]
 			mejorBPob = propuestas[1]
 			idVectorPob = i
-	print("Mejor vector de poblacion ",j,":", idVectorPob, mejorMPob, mejorBPob, mejorZPob)
+	#print("Mejor vector de poblacion ",j,":", idVectorPob, mejorMPob, mejorBPob, mejorZPob)
 	if(mejorZPob > mejorZ):
 		mejorZ = mejorZPob
 		mejorM = mejorMPob
 		mejorB = mejorBPob
 		idVector = idVectorPob
 		pob = j
-print("MEJOR poblacoin",pob,", vector", idVector,": m=",mejorM, ", b=",mejorB, "Z=", mejorZ)
+
+print("MEJOR poblacion",pob,", vector", idVector,": m=",mejorM, ", b=",mejorB, "Z=", mejorZ)
+#Funcion gaussiana
+
+
+print("Limite b",lim_b)
+print("Funcion gaussiana: ")
+poblacion = [] 
+mejorZ = -999999
+mejorK = 0
+idVector = 0
+pob = 0
+for j in range(1000):
+	mejorZPob = -999999
+	mejorKPob = 0
+	idVectorPob = 0
+	for i in range(1000):
+		propuestas = generarIndividuoGauss(5)
+		z = Z_gaussiana(puntos, propuestas, mejorM)
+		if(z > mejorZPob):
+			mejorZPob = z
+			mejorKPob = propuestas
+			idVectorPob = i
+	#print("Mejor vector de poblacion ",j,":", idVectorPob, mejorKPob, mejorZPob)
+	if(mejorZPob > mejorZ):
+		mejorZ = mejorZPob
+		mejorK = mejorKPob
+		idVector = idVectorPob
+		pob = j
+
+print("MEJOR poblacion",pob,", vector", idVector,": m=",mejorM, ", K=",mejorK, "Z=", mejorZ)

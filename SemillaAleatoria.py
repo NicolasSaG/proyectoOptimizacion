@@ -28,9 +28,11 @@ def Z_lineal(puntos, m, b):
 def Z_gaussiana(puntos, k, m):
 	z_value = 0 
 	for (x,y) in puntos:
-		z_value += abs(math.exp(-k*((x-m)**2)))
+		z_value += abs(math.exp(-k*((x-m)**2))-y)
 	z_value *= -1 
 	return z_value
 
 def generarIndividuoLineal(m, b):
 	return random.uniform(-m, m), random.uniform(-b, b)
+def generarIndividuoGauss(k):
+	return random.uniform(0, k)
