@@ -1,4 +1,5 @@
 import math
+import random
 
 def restriccion(value, lim, tipo):
 	cumple = False
@@ -31,3 +32,5 @@ def Z_gaussiana(puntos, k, m):
 	z_value *= -1 
 	return z_value
 
+def generarIndividuoLineal(m, b):
+	return random.uniform(-m, m), random.uniform(-b, b)

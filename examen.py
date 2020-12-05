@@ -1,4 +1,5 @@
 from SemillaAleatoria import *
+LIM_M = 100 #lim de la pendiente
 puntos = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
 
 print ("prueba de limite de b lineal")
@@ -19,3 +20,8 @@ print("prueba Z gaussiana")
 k = -0.1487
 m = 3.5
 print(Z_gaussiana(puntos, k, m))
+
+print("prueba generacion individuo:")
+ind = generarIndividuoLineal(LIM_M, lim_b)
+print(ind[0]) #m
+print(ind[1]) #b
