@@ -1,6 +1,6 @@
 from SemillaAleatoria import *
 LIM_M = 100 #lim de la pendiente
-puntos = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
+puntos = [[15, 0.3], [25, 0.45],[30, 0.78],[34, 1],[40, 0.85]]
 
 print ("prueba de limite de b lineal")
 print(calcular_bLineal(puntos))
@@ -69,6 +69,7 @@ print("Limite b",lim_b)
 print("Funcion gaussiana: ")
 poblacion = [] 
 mejorZ = -999999
+mejorM=Mayor(puntos)
 mejorK = 0
 idVector = 0
 pob = 0
@@ -83,11 +84,11 @@ for j in range(1000):
 			mejorZPob = z
 			mejorKPob = propuestas
 			idVectorPob = i
-	#print("Mejor vector de poblacion ",j,":", idVectorPob, mejorKPob, mejorZPob)
+	#print("Mejor vector de poblacion ",j,":", idVectorPob, -mejorKPob, mejorZPob)
 	if(mejorZPob > mejorZ):
 		mejorZ = mejorZPob
 		mejorK = mejorKPob
 		idVector = idVectorPob
 		pob = j
 
-print("MEJOR poblacion",pob,", vector", idVector,": m=",mejorM, ", K=",mejorK, "Z=", mejorZ)
+print("MEJOR poblacion",pob,", vector", idVector,": m=",-mejorM, ", K=",-mejorK, "Z=", mejorZ)

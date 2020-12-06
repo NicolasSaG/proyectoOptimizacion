@@ -18,6 +18,15 @@ def calcular_bLineal(puntos):
 	b = b**2
 	return b
 
+def Mayor(puntos):
+	xaux = 0
+	yaux = 0
+	for (x,y) in puntos:
+		if(y>yaux):
+			yaux=y
+			xaux=x
+	return xaux
+
 def Z_lineal(puntos, m, b):
 	z_value = 0 
 	for (x,y) in puntos:
@@ -36,3 +45,4 @@ def generarIndividuoLineal(m, b):
 	return random.uniform(-m, m), random.uniform(-b, b)
 def generarIndividuoGauss(k):
 	return random.uniform(0, k)
+
