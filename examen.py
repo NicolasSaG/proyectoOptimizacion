@@ -17,13 +17,14 @@ print("limites de b: [",-lim_b,",",lim_b,"]")
 #generacion de semilla
 random.seed(generarSemillaAleatoria()) 
 
-for j in range(100):
+inicioTiempo = obtenerTiempo()
+for j in range(1000):
 	#mejores de cada poblacion
 	mejorZPob = 10000
 	mejorMPob = 0
 	mejorBPob = 0
 	idVectorPob = 0
-	for i in range(1000):
+	for i in range(10000):
 		propuestas = generarIndividuoLineal(LIM_M, lim_b) #generacion de individuo
 		z = Z_lineal(puntos1, propuestas[0], propuestas[1]) #calculo de f.o. con los valores del individuo
 		if(z < mejorZPob): #comparacion con el mejor actual de la poblacion
@@ -38,5 +39,8 @@ for j in range(100):
 		mejorB = mejorBPob
 		idVector = idVectorPob
 		pob = j
+finTiempo = obtenerTiempo()
+
+print("tiempo de ejecucion: ", finTiempo - inicioTiempo, "s")
 print("MEJOR poblacion",pob,", vector", idVector,": m=",mejorM, ", b=",mejorB, "Z=", mejorZ)
 

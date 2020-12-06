@@ -1,5 +1,8 @@
 import math, random, subprocess, time
 
+def obtenerTiempo():
+	return time.time()
+
 def generarSemillaAleatoria():
 	# traverse the software list 
 	#pip install wmic
