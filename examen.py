@@ -45,6 +45,7 @@ for j in range(100):
 		#terminar si se pasa de 30 segundos
 		finTiempo = obtenerTiempo()
 		if(finTiempo - inicioTiempo > 30):
+			print("Me quede en la poblacion: {}  individuo: {}".format(j,i))
 			break
 	#print("Mejor vector de poblacion ",j,":", idVectorPob, mejorMPob, mejorBPob, mejorZPob)
 	if(mejorZPob < mejorZ): #comparacion con el mejor actual de la iteraciones
@@ -54,11 +55,7 @@ for j in range(100):
 		idVector = idVectorPob
 		pob = j
 	if(finTiempo - inicioTiempo > 30):
-<<<<<<< HEAD
-		print("Me quede en la poblacion: ", j, ", individuo: ", i)
-=======
 		print("Me quede en la poblacion: {}  individuo: {}".format(j,i))
->>>>>>> bbf5c2cdd53fd03e35d92277ba59ad62b09788fe
 		break	
 print("tiempo de ejecucion: ", finTiempo - inicioTiempo, "s")
 print("MEJOR poblacion {}, vector {}:, m={}, b={}, Z={}".format(pob, idVector,mejorM,mejorB,mejorZ))
