@@ -3,9 +3,10 @@ import ManejoArchivo as archivo
 LIM_M = 100 #lim de la pendiente
 LIM_TIEMPO = 30 #lim de ejecucion en segundos
 
-puntos1 = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
-puntos2 = [[.2, 0.1], [.5, 0.83],[.9,.4]]
-puntos3 = [[15,.3], [25,.45],[30,.78], [34, 1], [40,0.85]]
+#Valores prueba
+#puntos1 = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
+#puntos2 = [[.2, 0.1], [.5, 0.83],[.9,.4]]
+#puntos3 = [[15,.3], [25,.45],[30,.78], [34, 1], [40,0.85]]
 
 #almanecar mejores globales
 mejorZ = 10000
@@ -13,9 +14,12 @@ mejorM = 0
 mejorB = 0
 idVector = 0
 pob = 0
-print("Porfavor ingrese una ruta valida :)")
+#Ingreso de puntos#
+print("Porfavor ingrese una ruta valida para obtener los puntos a usar :)")
 ruta=input()
 puntos = archivo.LecturaArchivo(ruta).tolist()
+
+
 lim_b = calcular_bLineal(puntos)
 print("limites de b: [",-lim_b,",",lim_b,"]")
 
@@ -32,7 +36,7 @@ for j in range(100):
 	idVectorPob = 0
 	for i in range(1000):
 		propuestas = generarIndividuoLineal(LIM_M, lim_b) #generacion de individuo
-		z = Z_lineal(puntos1, propuestas[0], propuestas[1]) #calculo de f.o. con los valores del individuo
+		z = Z_lineal(puntos, propuestas[0], propuestas[1]) #calculo de f.o. con los valores del individuo
 		if(z < mejorZPob): #comparacion con el mejor actual de la poblacion
 			mejorZPob = z
 			mejorMPob = propuestas[0]
@@ -53,13 +57,13 @@ for j in range(100):
 		print("Me quede en la poblacion: {}  individuo: {}".format(j,i))
 		break	
 print("tiempo de ejecucion: ", finTiempo - inicioTiempo, "s")
-print("MEJOR poblacion",pob,", vector", idVector,": m=",mejorM, ", b=",mejorB, "Z=", mejorZ)
+print("MEJOR poblacion {}, vector {}:, m={}, b={}, Z={}".format(pob, idVector,mejorM,mejorB,mejorZ))
 #Funcion gaussiana
 print("Limite b",lim_b)
 print("Funcion gaussiana: ")
 poblacion = [] 
 mejorZ = 10000
-mejorM=Mayor(puntos1)
+mejorM=Mayor(puntos)
 mejorK = 0
 idVector = 0
 pob = 0
@@ -72,7 +76,7 @@ for j in range(1000):
 	rango=1
 	for i in range(1000):
 		propuestas = generarIndividuoGauss(infe,supe)
-		z = Z_gaussiana(puntos1, propuestas, mejorM)
+		z = Z_gaussiana(puntos, propuestas, mejorM)
 		if(z < mejorZPob):
 			mejorZPob = z
 			mejorKPob = propuestas	
@@ -86,4 +90,4 @@ for j in range(1000):
 		mejorK = mejorKPob
 		idVector = idVectorPob
 		pob = j
-print("MEJOR poblacion",pob,", vector", idVector,": m=",-mejorM, ", K=",-mejorK, "Z=", mejorZ)
+print("MEJOR poblacion {}, vector {}:, m={}, K={}, Z={}".format(pob, idVector,-1*mejorM,-1*mejorK,mejorZ))
