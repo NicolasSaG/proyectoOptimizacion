@@ -1,6 +1,8 @@
 from SemillaAleatoria import *
 
 LIM_M = 100 #lim de la pendiente
+LIM_TIEMPO = 30 #lim de ejecucion en segundos
+
 puntos1 = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
 puntos2 = [[.2, 0.1], [.5, 0.83],[.9,.4]]
 puntos3 = [[15,.3], [25,.45],[30,.78], [34, 1], [40,0.85]]
@@ -18,13 +20,14 @@ print("limites de b: [",-lim_b,",",lim_b,"]")
 random.seed(generarSemillaAleatoria()) 
 
 inicioTiempo = obtenerTiempo()
-for j in range(1000):
+finTiempo = 0
+for j in range(100):
 	#mejores de cada poblacion
 	mejorZPob = 10000
 	mejorMPob = 0
 	mejorBPob = 0
 	idVectorPob = 0
-	for i in range(10000):
+	for i in range(1000):
 		propuestas = generarIndividuoLineal(LIM_M, lim_b) #generacion de individuo
 		z = Z_lineal(puntos1, propuestas[0], propuestas[1]) #calculo de f.o. con los valores del individuo
 		if(z < mejorZPob): #comparacion con el mejor actual de la poblacion
@@ -32,6 +35,10 @@ for j in range(1000):
 			mejorMPob = propuestas[0]
 			mejorBPob = propuestas[1]
 			idVectorPob = i
+		#terminar si se pasa de 30 segundos
+		finTiempo = obtenerTiempo()
+		if(finTiempo - inicioTiempo > 30):
+			break
 	#print("Mejor vector de poblacion ",j,":", idVectorPob, mejorMPob, mejorBPob, mejorZPob)
 	if(mejorZPob < mejorZ): #comparacion con el mejor actual de la iteraciones
 		mejorZ = mejorZPob
@@ -39,7 +46,9 @@ for j in range(1000):
 		mejorB = mejorBPob
 		idVector = idVectorPob
 		pob = j
-finTiempo = obtenerTiempo()
+	if(finTiempo - inicioTiempo > 30):
+		print("Me quede en la poblacion: ", j, ", individuo: ", i)
+		break	
 
 print("tiempo de ejecucion: ", finTiempo - inicioTiempo, "s")
 print("MEJOR poblacion",pob,", vector", idVector,": m=",mejorM, ", b=",mejorB, "Z=", mejorZ)
