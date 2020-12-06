@@ -1,7 +1,7 @@
 from SemillaAleatoria import *
 LIM_M = 100 #lim de la pendiente
-puntos = [[15, 0.3], [25, 0.45],[30, 0.78],[34, 1],[40, 0.85]]
-
+#puntos = [[15, 0.3], [25, 0.45],[30, 0.78],[34, 1],[40, 0.85]]
+puntos = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
 print ("prueba de limite de b lineal")
 print(calcular_bLineal(puntos))
 
@@ -35,26 +35,27 @@ print(ind[1]) #b
 
 print("\npoblacion 1")
 poblacion = [] 
-mejorZ = -999999
+mejorZ = 10000
 mejorM = 0
 mejorB = 0
 idVector = 0
 pob = 0
-for j in range(1000):
-	mejorZPob = -999999
+lim_b = calcular_bLineal(puntos)
+for j in range(100):
+	mejorZPob = 10000
 	mejorMPob = 0
 	mejorBPob = 0
 	idVectorPob = 0
-	for i in range(1000):
+	for i in range(10000):
 		propuestas = generarIndividuoLineal(LIM_M, lim_b)
 		z = Z_lineal(puntos, propuestas[0], propuestas[1])
-		if(z > mejorZPob):
+		if(z < mejorZPob):
 			mejorZPob = z
 			mejorMPob = propuestas[0]
 			mejorBPob = propuestas[1]
 			idVectorPob = i
 	#print("Mejor vector de poblacion ",j,":", idVectorPob, mejorMPob, mejorBPob, mejorZPob)
-	if(mejorZPob > mejorZ):
+	if(mejorZPob < mejorZ):
 		mejorZ = mejorZPob
 		mejorM = mejorMPob
 		mejorB = mejorBPob
@@ -68,24 +69,24 @@ print("MEJOR poblacion",pob,", vector", idVector,": m=",mejorM, ", b=",mejorB, "
 print("Limite b",lim_b)
 print("Funcion gaussiana: ")
 poblacion = [] 
-mejorZ = -999999
+mejorZ = 10000
 mejorM=Mayor(puntos)
 mejorK = 0
 idVector = 0
 pob = 0
 for j in range(1000):
-	mejorZPob = -999999
+	mejorZPob = 10000
 	mejorKPob = 0
 	idVectorPob = 0
 	for i in range(1000):
 		propuestas = generarIndividuoGauss(5)
 		z = Z_gaussiana(puntos, propuestas, mejorM)
-		if(z > mejorZPob):
+		if(z < mejorZPob):
 			mejorZPob = z
 			mejorKPob = propuestas
 			idVectorPob = i
-	#print("Mejor vector de poblacion ",j,":", idVectorPob, -mejorKPob, mejorZPob)
-	if(mejorZPob > mejorZ):
+	#print("Mejor vector de poblacion ",j,":", idVectorPob, -mejorKPob, bbmejorZPob)
+	if(mejorZPob < mejorZ):
 		mejorZ = mejorZPob
 		mejorK = mejorKPob
 		idVector = idVectorPob
