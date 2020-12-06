@@ -54,7 +54,6 @@ for j in range(100):
 	for i in range(1000):
 		propuestas = generarIndividuoLineal(LIM_M, lim_b)
 		z = Z_lineal(puntos3, propuestas[0], propuestas[1])
-
 		if(z < mejorZPob):
 			mejorZPob = z
 			mejorMPob = propuestas[0]
@@ -68,9 +67,5 @@ for j in range(100):
 		idVector = idVectorPob
 		pob = j
 	#print("poblacion ", j)
-print("MEJOR poblacoin",pob,", vector", idVector,": m=",mejorM, ", b=",mejorB, "Z=", mejorZ)
+print("MEJOR poblacion",pob,", vector", idVector,": m=",mejorM, ", b=",mejorB, "Z=", mejorZ)
 
-
- 
-
-print(generarSemillaAleatoria())
