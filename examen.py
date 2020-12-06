@@ -1,5 +1,5 @@
 from SemillaAleatoria import *
-
+import ManejoArchivo as archivo
 LIM_M = 100 #lim de la pendiente
 LIM_TIEMPO = 30 #lim de ejecucion en segundos
 
@@ -13,7 +13,10 @@ mejorM = 0
 mejorB = 0
 idVector = 0
 pob = 0
-lim_b = calcular_bLineal(puntos1)
+print("Porfavor ingrese una ruta valida :)")
+ruta=input()
+puntos = archivo.LecturaArchivo(ruta).tolist()
+lim_b = calcular_bLineal(puntos)
 print("limites de b: [",-lim_b,",",lim_b,"]")
 
 #generacion de semilla
@@ -47,14 +50,11 @@ for j in range(100):
 		idVector = idVectorPob
 		pob = j
 	if(finTiempo - inicioTiempo > 30):
-    		print("Me quede en la poblacion: ", j, ", individuo: ", i)
+		print("Me quede en la poblacion: {}  individuo: {}".format(j,i))
 		break	
-
 print("tiempo de ejecucion: ", finTiempo - inicioTiempo, "s")
 print("MEJOR poblacion",pob,", vector", idVector,": m=",mejorM, ", b=",mejorB, "Z=", mejorZ)
 #Funcion gaussiana
-
-
 print("Limite b",lim_b)
 print("Funcion gaussiana: ")
 poblacion = [] 
@@ -86,5 +86,4 @@ for j in range(1000):
 		mejorK = mejorKPob
 		idVector = idVectorPob
 		pob = j
-
 print("MEJOR poblacion",pob,", vector", idVector,": m=",-mejorM, ", K=",-mejorK, "Z=", mejorZ)
