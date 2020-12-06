@@ -23,7 +23,7 @@ inicioTiempo = obtenerTiempo()
 finTiempo = 0
 for j in range(100):
 	#mejores de cada poblacion
-	mejorZPob = 10000
+	mejorZPob = 100000
 	mejorMPob = 0
 	mejorBPob = 0
 	idVectorPob = 0
