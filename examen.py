@@ -47,7 +47,7 @@ for j in range(100):
 		idVector = idVectorPob
 		pob = j
 	if(finTiempo - inicioTiempo > 30):
-    		print("Me quede en la poblacion: ", j, ", individuo: ", i)
+		print("Me quede en la poblacion: ", j, ", individuo: ", i)
 		break	
 
 print("tiempo de ejecucion: ", finTiempo - inicioTiempo, "s")

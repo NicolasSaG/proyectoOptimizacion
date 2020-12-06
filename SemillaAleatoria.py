@@ -1,7 +1,7 @@
 import math, random, subprocess, time
 
 def obtenerTiempo():
-	return time.process_time()
+    	return time.process_time()
 
 def generarSemillaAleatoria():
 	# traverse the software list 
