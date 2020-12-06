@@ -1,5 +1,17 @@
-import math
-import random
+import math, random, subprocess, time
+
+def generarSemillaAleatoria():
+	# traverse the software list 
+	#pip install wmic
+	data = subprocess.check_output(['wmic', 'process', 'list', 'brief'])
+	a = str(data)
+	n_proc = 0
+	t = time.localtime()
+	try:
+	  for i in range(len(a)):
+	  	a.split("\\r\\r\\n")[i]
+	except IndexError as e:
+	  return i * t.tm_hour * t.tm_min * t.tm_sec
 
 def restriccion(value, lim, tipo):
 	cumple = False
@@ -11,12 +23,13 @@ def restriccion(value, lim, tipo):
 			cumple = True
 	return cumple
 
-def calcular_bLineal(puntos):
-	b = 0
-	for (x,y) in puntos:
-		b += x
-	b = b**2
-	return b
+#calcular el limite de b
+def calcular_bLineal(puntos): #(Zx)^2 = b
+	lim_b = 0
+	for (x,y) in puntos: #sumar los valores de x
+		lim_b += x
+	lim_b = lim_b**2 #elevar la suma al cuadrado
+	return lim_b
 
 def Mayor(puntos):
 	xaux = 0
@@ -29,9 +42,10 @@ def Mayor(puntos):
 
 def Z_lineal(puntos, m, b):
 	z_value = 0 
-	for (x,y) in puntos:
-		z_value += abs(m*x + b - y)
- 
+	#sumar valores absolutos de la recta dados los puntos y 
+	#m y b generados aleatoriamente
+	for (x,y) in puntos: 
+		z_value += abs(m*x + b - y) 
 	return z_value
 
 def Z_gaussiana(puntos, k, m):
@@ -40,6 +54,7 @@ def Z_gaussiana(puntos, k, m):
 		z_value += abs(math.exp(-k*((x-m)*(x-m)))-y)
 	return z_value
 
+#generacion de individuo para limites de la funcion lineal
 def generarIndividuoLineal(m, b):
 	return random.uniform(-m, m), random.uniform(-b, b)
 def generarIndividuoGauss(i,s):
