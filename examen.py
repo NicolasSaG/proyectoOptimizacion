@@ -7,7 +7,7 @@ print(calcular_bLineal(puntos))
 
 print ("prueba restriccion")
 lim_m = 100
-lim_b = 132.5
+lim_b = 132.25
 r = 80
 print(restriccion(r, lim_m, 0))
 
@@ -32,26 +32,27 @@ print(ind[1]) #b
 
 print("\npoblacion 1")
 poblacion = [] 
-mejorZ = -999999
+mejorZ = 10000
 mejorM = 0
 mejorB = 0
 idVector = 0
 pob = 0
-for j in range(1000):
-	mejorZPob = -999999
+lim_b = calcular_bLineal(puntos)
+for j in range(100):
+	mejorZPob = 10000
 	mejorMPob = 0
 	mejorBPob = 0
 	idVectorPob = 0
-	for i in range(1000):
+	for i in range(10000):
 		propuestas = generarIndividuoLineal(LIM_M, lim_b)
 		z = Z_lineal(puntos, propuestas[0], propuestas[1])
-		if(z > mejorZPob):
+		if(z < mejorZPob):
 			mejorZPob = z
 			mejorMPob = propuestas[0]
 			mejorBPob = propuestas[1]
 			idVectorPob = i
-	print("Mejor vector de poblacion ",j,":", idVectorPob, mejorMPob, mejorBPob, mejorZPob)
-	if(mejorZPob > mejorZ):
+	#print("Mejor vector de poblacion ",j,":", idVectorPob, mejorMPob, mejorBPob, mejorZPob)
+	if(mejorZPob < mejorZ):
 		mejorZ = mejorZPob
 		mejorM = mejorMPob
 		mejorB = mejorBPob
