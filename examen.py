@@ -43,6 +43,9 @@ idVector = 0
 pob = 0
 lim_b = calcular_bLineal(puntos3)
 print("lim b:",lim_b)
+
+random.seed(generarSemillaAleatoria()) 
+
 for j in range(100):
 	mejorZPob = 10000
 	mejorMPob = 0
