@@ -1,7 +1,7 @@
 import math, random, subprocess, time
 
 def obtenerTiempo():
-	return time.process_time()
+    	return time.process_time()
 
 def generarSemillaAleatoria():
 	# traverse the software list 
@@ -34,7 +34,15 @@ def calcular_bLineal(puntos): #(Zx)^2 = b
 	lim_b = lim_b**2 #elevar la suma al cuadrado
 	return lim_b
 
-#calculo de la f.o. dados n puntos, m y b
+def Mayor(puntos):
+	xaux = 0
+	yaux = 0
+	for (x,y) in puntos:
+		if(y>yaux):
+			yaux=y
+			xaux=x
+	return xaux
+
 def Z_lineal(puntos, m, b):
 	z_value = 0 
 	#sumar valores absolutos de la recta dados los puntos y 
@@ -44,11 +52,14 @@ def Z_lineal(puntos, m, b):
 	return z_value
 
 def Z_gaussiana(puntos, k, m):
-	z_value = 0 
+	z_value = 0
 	for (x,y) in puntos:
-		z_value += abs(math.exp(-k*((x-m)**2)))
+		z_value += abs(math.exp(-k*((x-m)*(x-m)))-y)
 	return z_value
 
 #generacion de individuo para limites de la funcion lineal
 def generarIndividuoLineal(m, b):
 	return random.uniform(-m, m), random.uniform(-b, b)
+def generarIndividuoGauss(i,s):
+	return random.uniform(i,s)
+
