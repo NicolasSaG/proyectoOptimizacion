@@ -1,7 +1,7 @@
 from SemillaAleatoria import *
 LIM_M = 100 #lim de la pendiente
-#puntos = [[15, 0.3], [25, 0.45],[30, 0.78],[34, 1],[40, 0.85]]
-puntos = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
+puntos = [[15, 0.3], [25, 0.45],[30, 0.78],[34, 1],[40, 0.85]]
+#puntos = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
 print ("prueba de limite de b lineal")
 print(calcular_bLineal(puntos))
 
@@ -74,17 +74,23 @@ mejorM=Mayor(puntos)
 mejorK = 0
 idVector = 0
 pob = 0
+infe=0
+supe=5
 for j in range(1000):
 	mejorZPob = 10000
 	mejorKPob = 0
 	idVectorPob = 0
+	rango=1
 	for i in range(1000):
-		propuestas = generarIndividuoGauss(5)
+		propuestas = generarIndividuoGauss(infe,supe)
 		z = Z_gaussiana(puntos, propuestas, mejorM)
 		if(z < mejorZPob):
 			mejorZPob = z
-			mejorKPob = propuestas
+			mejorKPob = propuestas	
+			supe=mejorKPob+rango
+			infe=mejorKPob-rango
 			idVectorPob = i
+		rango=rango/10
 	#print("Mejor vector de poblacion ",j,":", idVectorPob, -mejorKPob, bbmejorZPob)
 	if(mejorZPob < mejorZ):
 		mejorZ = mejorZPob
