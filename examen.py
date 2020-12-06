@@ -1,6 +1,10 @@
 from SemillaAleatoria import *
+
+
 LIM_M = 100 #lim de la pendiente
 puntos = [[1, 0.42], [3, 0.75],[3.5, 1],[4, 0.42]]
+puntos2 = [[.2, 0.1], [.5, 0.83],[.9,.4]]
+puntos3 = [[15,.3], [25,.45],[30,.78], [34, 1], [40,0.85]]
 
 print ("prueba de limite de b lineal")
 print(calcular_bLineal(puntos))
@@ -37,15 +41,17 @@ mejorM = 0
 mejorB = 0
 idVector = 0
 pob = 0
-lim_b = calcular_bLineal(puntos)
+lim_b = calcular_bLineal(puntos3)
+print("lim b:",lim_b)
 for j in range(100):
 	mejorZPob = 10000
 	mejorMPob = 0
 	mejorBPob = 0
 	idVectorPob = 0
-	for i in range(10000):
+	for i in range(1000):
 		propuestas = generarIndividuoLineal(LIM_M, lim_b)
-		z = Z_lineal(puntos, propuestas[0], propuestas[1])
+		z = Z_lineal(puntos3, propuestas[0], propuestas[1])
+
 		if(z < mejorZPob):
 			mejorZPob = z
 			mejorMPob = propuestas[0]
@@ -58,4 +64,10 @@ for j in range(100):
 		mejorB = mejorBPob
 		idVector = idVectorPob
 		pob = j
+	#print("poblacion ", j)
 print("MEJOR poblacoin",pob,", vector", idVector,": m=",mejorM, ", b=",mejorB, "Z=", mejorZ)
+
+
+ 
+
+print(generarSemillaAleatoria())

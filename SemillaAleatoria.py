@@ -1,5 +1,20 @@
 import math
 import random
+import subprocess
+import time
+
+def generarSemillaAleatoria():
+	# traverse the software list 
+	#pip install wmic
+	data = subprocess.check_output(['wmic', 'process', 'list', 'brief'])
+	a = str(data)
+	n_proc = 0
+	t = time.localtime()
+	try:
+	  for i in range(len(a)):
+	  	a.split("\\r\\r\\n")[i]
+	except IndexError as e:
+	  return i * t.tm_hour * t.tm_min * t.tm_sec
 
 def restriccion(value, lim, tipo):
 	cumple = False
