@@ -1,3 +1,4 @@
+#Archivo de codigo principal, es que hace funcionar el programa#
 from SemillaAleatoria import *
 import ManejoArchivo as archivo
 
@@ -5,7 +6,7 @@ LIM_M = 100 #lim de la pendiente
 LIM_TIEMPO = 30 #lim de ejecucion en segundos
 
 #Ingreso de puntos#
-print("Porfavor ingrese una ruta valida para obtener los puntos a usar :)")
+print("Porfavor ingrese una ruta valida de un archivo para obtener los puntos a usar :)")
 ruta=input()
 puntos = archivo.LecturaArchivo(ruta).tolist()
 print(puntos)

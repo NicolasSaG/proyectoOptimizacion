@@ -1,3 +1,4 @@
+#Archivo de codigo para manejar archivos, es que obtiene los puntos por medio de un archivo local#
 import pandas as pd
 import numpy
 

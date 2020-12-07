@@ -1,3 +1,5 @@
+#Archivo de codigo con las funciones necesarias para el correcto funcionamiento, de acuerdo al metodo de semilla aleatoria#
+
 import math, random, subprocess, time
 
 def obtenerTiempo():
