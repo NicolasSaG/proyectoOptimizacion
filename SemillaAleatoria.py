@@ -54,7 +54,7 @@ def Z_lineal(puntos, m, b):
 def Z_gaussiana(puntos, k, m):
 	z_value = 0
 	for (x,y) in puntos:
-		z_value += abs(math.exp(-k*((x-m)*(x-m)))-y)
+		z_value += abs(math.exp(-k*((x-m)*(x-m))))
 	return z_value
 
 #generacion de individuo para limites de la funcion lineal
