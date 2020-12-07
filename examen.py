@@ -8,6 +8,7 @@ LIM_TIEMPO = 30 #lim de ejecucion en segundos
 print("Porfavor ingrese una ruta valida para obtener los puntos a usar :)")
 ruta=input()
 puntos = archivo.LecturaArchivo(ruta).tolist()
+print(puntos)
 
 print("Numero de iteraciones (1 a 100):")
 num_iteraciones = int(input())
