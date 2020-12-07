@@ -88,10 +88,18 @@ for j in range(num_iteraciones):
 			infe=mejorKPob-rango
 			idVectorPob = i
 		rango=rango/10
+		finTiempo = obtenerTiempo()
+		if(finTiempo - inicioTiempo > LIM_TIEMPO):
+			print("Me quede en la poblacion: {}  individuo: {}".format(j,i))
+			break
 	print("El mejor de poblacion {}, vector {}:, m={} k={} Z={}".format(j, idVectorPob,mejorM, mejorKPob, mejorZPob))
 	if(mejorZPob < mejorZ):
 		mejorZ = mejorZPob
 		mejorK = mejorKPob
 		idVector = idVectorPob
 		pob = j
+	if(finTiempo - inicioTiempo > LIM_TIEMPO):
+		print("Me quede en la poblacion: {}  individuo: {}".format(j,i))
+		break	
+print("tiempo de ejecucion: ", finTiempo - inicioTiempo, "s")
 print("MEJOR poblacion {}, vector {}:, m={}, K={}, Z={}".format(pob, idVector,-1*mejorM,-1*mejorK,mejorZ))
