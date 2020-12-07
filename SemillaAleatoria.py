@@ -62,4 +62,3 @@ def generarIndividuoLineal(m, b):
 	return random.uniform(-m, m), random.uniform(-b, b)
 def generarIndividuoGauss(i,s):
 	return random.uniform(i,s)
-
